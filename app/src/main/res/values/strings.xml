@@ -64,4 +64,16 @@
     <string name="report_event_title">Report Event</string>
     <string name="reports_on_title">Reports on</string>
     <string name="youOwnThis">You own this!</string>
+    <string name="upcoming">UPCOMING</string>
+    <string name="account_details">Account Details</string>
+    <string name="help">Help</string>
+    <string name="what_is_this">What is this?</string>
+    <string name="help_desc">This is the \'detailed event\' page, which displays information about a particular event.</string>
+    <string name="help_flag">To report the event.</string>
+    <string name="help_report">To view reports of event. (Can only be seen by event owner.)</string>
+    <string name="help_edit">To edit the event details. (Can only be seen by event owner.)</string>
+    <string name="help_delete">To delete the event. (Can only be seen by event owner.)</string>
+    <string name="help_announce">To announce the event. (Can only be seen by event owner.)</string>
+    <string name="registerForEvent">Click to register for the event.</string>
+    <string name="viewAttendees">Click to view attendees list.</string>
 </resources>

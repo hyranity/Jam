@@ -57,7 +57,7 @@
         android:layout_marginRight="50dp"
         android:layout_weight="1"
         android:onClick="updateAccount"
-        android:text="Account Details"
+        android:text="@string/account_details"
         android:textColor="@color/colorAccent"
         android:textSize="30sp"
         android:textStyle="bold"
