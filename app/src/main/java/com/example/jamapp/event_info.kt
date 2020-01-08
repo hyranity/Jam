@@ -1,6 +1,7 @@
 package com.example.jamapp
 
 import android.app.AlertDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -249,6 +250,11 @@ class event_info : AppCompatActivity() {
 
     public fun helpToEvent(view: View) {
         view.findNavController().navigate(R.id.action_event_help_to_event)
+    }
+
+    public fun openAboutUs(view: View) {
+        // Open about us activity
+        startActivity(Intent(this, about_us::class.java))
     }
 
     // For editing events

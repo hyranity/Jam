@@ -18,6 +18,7 @@
         <!--  Scrolling titles possible thanks to rajath @ https://stackoverflow.com/questions/5472362/android-automatic-horizontally-scrolling-textview -->
 
         <TextView
+            android:onClick="openAboutUs"
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
