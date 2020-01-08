@@ -150,7 +150,7 @@
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:clickable="true"
-        android:text="@string/aboutUs_email_title"
+        android:text="@string/Email"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         android:textStyle="bold"
