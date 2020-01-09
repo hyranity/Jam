@@ -112,7 +112,11 @@ class create_event : AppCompatActivity() {
         // VALIDATION : ensure input date is after current date
         val currentTime = Calendar.getInstance() as Calendar
         if (!currentTime.before(cal)) {
-            val toast = Toast.makeText(applicationContext, "Date of event should not be before the current date.", Toast.LENGTH_SHORT)
+            val toast = Toast.makeText(
+                applicationContext,
+                "Date of event should be after today.",
+                Toast.LENGTH_SHORT
+            )
             toast.show()
             return
         }
