@@ -1,0 +1,9 @@
+# Jam
+
+This mobile application is the final submission for the BAIT 2073 Mobile Application Development assignment, completed by group members Johann Lee Jia Xuan, Jane Lynette Joannes, Kelvin Ng Tiong Kiat and Ryan Izzat Razali Koroh, of RSD 2 tutorial group 8.
+
+The application itself is mobile application built using Kotlin and related languages/files, as well as Firebase as our database for storing relevant data. It acts as a 'events manager app' dubbed 'JamApp', or simply 'Jam' in short. It includes functionalities revolving around user account management (eg. user registration, user login, user account modification) and events management (eg. create event, edit event, remove event), among other related and complimenting features. We have designed the user interface screens as well as the back-end of the application to fulfill these functionalities, resulting in a fully-functioning/operational events management application.
+
+In order to run the application, acquire the APK file of the application (named JamApk.apk), and simply run that file. From here, the applicatoin itself can be accessed and navigated through, starting with the Login screen, from which one will need an registered account to proceed (thus, an account registration option is also provided).
+
+The source code of the application can be gotten by acquiring and extracting the JamApp.zip ZIP archive, and opening the application package within it in a supported IDE, ideally Android Studio. Once opened in the IDE, one can click the green 'Run' arrow button near the top of the window to run the application, or alternatively navigate through the source code in its entirety, and even rebuild the APK for the application. (Note: If needed, the application package can be acquired via GitHub, by simply checking out from the repository using the following URL - https://github.com/iiRays/Jam.git).
