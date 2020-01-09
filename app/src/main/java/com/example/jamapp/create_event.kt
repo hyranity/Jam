@@ -135,7 +135,7 @@ class create_event : AppCompatActivity() {
             imageLink = createEventImageUrl.text.toString(),
             learnMoreLink = createEventWebLink.text.toString(),
             date = createEventDate.text.toString(),
-            attendanceCount = 1
+            attendanceCount = 0
         )
 
         // Store new event under new event id
