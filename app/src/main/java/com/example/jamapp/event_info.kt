@@ -215,6 +215,8 @@ class event_info : AppCompatActivity() {
         // Push to database
         db.child("event").child(event.event_id).child("reports").push().setValue(report)
 
+        // Show feedback
+        Toast.makeText(this, "Report submitted.", Toast.LENGTH_SHORT).show()
 
         // Redirect
         backToEventInfo(view)

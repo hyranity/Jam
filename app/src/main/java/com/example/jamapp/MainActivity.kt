@@ -185,7 +185,6 @@ class MainActivity : AppCompatActivity() {
             // Perform update
             auth.currentUser?.updateEmail(editAccountEmail.text.toString())?.addOnSuccessListener {
                 Log.d("MyAccount", "Email updated")
-                Toast.makeText(applicationContext, "Email updated", Toast.LENGTH_SHORT).show()
                 db.child("users").child(auth.currentUser!!.uid).child("email")
                     .setValue(editAccountEmail.text.toString())
 
