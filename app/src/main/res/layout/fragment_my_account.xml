@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MyAcvcount">
+    android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/editAccountEmail"
@@ -87,7 +86,7 @@
         android:layout_marginLeft="90dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="60dp"
         android:background="#F0C28C"
         android:onClick="updateAccount"
         android:text="@string/btn_save"
@@ -106,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="90dp"
         android:layout_marginRight="90dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="60dp"
         android:background="@color/colorAccent"
         android:onClick="performLogout"
         android:paddingLeft="20dp"

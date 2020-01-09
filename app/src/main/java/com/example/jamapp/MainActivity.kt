@@ -31,7 +31,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var db : DatabaseReference
+    private lateinit var db: DatabaseReference
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         tabs.setSelectedTabIndicatorGravity(TabLayout.INDICATOR_GRAVITY_STRETCH)
 
         // Test link
-        val textView : TextView = findViewById(R.id.textView)
+        val textView: TextView = findViewById(R.id.textView)
         textView.movementMethod = LinkMovementMethod.getInstance()
 
         // To change icon colors
@@ -103,78 +103,124 @@ class MainActivity : AppCompatActivity() {
         return icons
     }
 
-    public fun createEvent(view : View){
+    public fun createEvent(view: View) {
         val intent = Intent(this, create_event::class.java)
         startActivity(intent)
     }
 
-    public fun performLogout(view : View){
-      val  auth = FirebaseAuth.getInstance();
+    public fun performLogout(view: View) {
+        val auth = FirebaseAuth.getInstance();
         auth.signOut()
 
         // redirect back to login screen
         val intent = Intent(this, LandingActivity::class.java)
-        val toast = Toast.makeText(applicationContext, "Logged out successfully", Toast.LENGTH_SHORT)
+        val toast =
+            Toast.makeText(applicationContext, "Logged out successfully", Toast.LENGTH_SHORT)
         toast.show()
         startActivity(intent)
         finish()
     }
 
-    public fun updateAccount(view : View){
-        if(editAccountEmail.text.isBlank() || editAccountName.text.isBlank()){
+    public fun updateAccount(view: View) {
+        if (editAccountEmail.text.isBlank() || editAccountName.text.isBlank()) {
             // empty fields
-            val toast = Toast.makeText(applicationContext, "Ensure both email & name is filled", Toast.LENGTH_SHORT)
+            val toast = Toast.makeText(
+                applicationContext,
+                "Ensure both email & name is filled",
+                Toast.LENGTH_SHORT
+            )
             toast.show()
             return
         }
 
-        if(confirmEditPassword.text.isBlank()){
+        if (confirmEditPassword.text.isBlank()) {
             // empty fields
-            val toast = Toast.makeText(applicationContext, "Enter current password to confirm changes", Toast.LENGTH_SHORT)
+            val toast = Toast.makeText(
+                applicationContext,
+                "Enter current password to confirm changes",
+                Toast.LENGTH_SHORT
+            )
             toast.show()
             return
         }
 
         var updatePassword = false
         // Perform checks
-        if(!editAccounPassword.text.isBlank())
+        if (!editAccounPassword.text.isBlank())
             updatePassword = true
 
-        if(updatePassword && editAccounPassword.text.toString().length < 6){
+        if (updatePassword && editAccounPassword.text.toString().length < 6) {
             // Invalid password length
-            val toast = Toast.makeText(applicationContext, "Password must be 6 characters long", Toast.LENGTH_SHORT)
+            val toast = Toast.makeText(
+                applicationContext,
+                "Password must be 6 characters long",
+                Toast.LENGTH_SHORT
+            )
             toast.show()
             return
         }
 
         // VALIDATION : ensure email input is valid - https://stackoverflow.com/a/7882950
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(editAccountEmail.text.toString()).matches()) {
-            val toast = Toast.makeText(applicationContext, "Your email should use the format eg. example@mail.com.", Toast.LENGTH_SHORT)
+            val toast = Toast.makeText(
+                applicationContext,
+                "Your email should use the format eg. example@mail.com.",
+                Toast.LENGTH_SHORT
+            )
             toast.show()
             return
         }
 
         //Re authenticate user
-        val credential = EmailAuthProvider.getCredential(auth.currentUser?.email.toString(), confirmEditPassword.text.toString())
+        val credential = EmailAuthProvider.getCredential(
+            auth.currentUser?.email.toString(),
+            confirmEditPassword.text.toString()
+        )
         Log.d("AUTHENTICATE", confirmEditPassword.text.toString())
 
+        var emailErrors = true
 
-        auth.currentUser?.reauthenticate(credential)?.addOnSuccessListener{
-           Log.d("My Account", "User re-authenticated")
+        auth.currentUser?.reauthenticate(credential)?.addOnSuccessListener {
+            Log.d("My Account", "User re-authenticated")
             // Perform update
-            auth.currentUser?.updateEmail(editAccountEmail.text.toString())?.addOnCompleteListener{Log.d("MyAccount","Email updated")}
+            auth.currentUser?.updateEmail(editAccountEmail.text.toString())?.addOnSuccessListener {
+                Log.d("MyAccount", "Email updated")
+                Toast.makeText(applicationContext, "Email updated", Toast.LENGTH_SHORT).show()
+                db.child("users").child(auth.currentUser!!.uid).child("email")
+                    .setValue(editAccountEmail.text.toString())
 
-            if(updatePassword)
-                auth.currentUser?.updatePassword(editAccounPassword.text.toString())?.addOnCompleteListener{Log.d("MyAccount","Password updated")}
+                // Only if email is valid then we continue to update the password
+                if (updatePassword)
+                    auth.currentUser?.updatePassword(editAccounPassword.text.toString())?.addOnSuccessListener {
+                        Log.d("MyAccount", "Password updated")
+                    }
+                db.child("users").child(auth.currentUser!!.uid).child("name")
+                    .setValue(editAccountName.text.toString()).addOnSuccessListener {
+                        // Show success message if all is a success
+                        Toast.makeText(
+                            applicationContext,
+                            "Account changes saved",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                    }
 
-            db.child("users").child(auth.currentUser!!.uid).child("name").setValue(editAccountName.text.toString())
-            db.child("users").child(auth.currentUser!!.uid).child("email").setValue(editAccountEmail.text.toString())
+            }?.addOnFailureListener {
+                Toast.makeText(
+                    applicationContext,
+                    "That email is used by another account",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
 
-            val toast = Toast.makeText(applicationContext, "Account changes saved", Toast.LENGTH_SHORT)
-            toast.show()
-       }?.addOnFailureListener {
-            Log.w("MyAccount","Wrong password")
-            val toast = Toast.makeText(applicationContext, "Your current password is wrong", Toast.LENGTH_SHORT)
+
+        }?.addOnFailureListener {
+            Log.w("MyAccount", "Wrong password")
+            val toast = Toast.makeText(
+                applicationContext,
+                "Your current password is wrong",
+                Toast.LENGTH_SHORT
+            )
             toast.show()
         }
 
