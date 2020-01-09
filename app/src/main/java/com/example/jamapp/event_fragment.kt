@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.jamapp.Model.Event
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -127,7 +128,19 @@ class event_fragment : Fragment() {
             view.register_button.visibility = View.GONE
         }
 
+        // Make the description scrollable
         view.event_description.movementMethod = ScrollingMovementMethod()
+
+        // Convert the string to calendar
+        val eventDate = Calendar.getInstance() as Calendar
+        val dateFmt = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+        eventDate.time = dateFmt.parse(event_item.date)
+
+        // Hide the attend button if it's in the past
+        val currentTime = Calendar.getInstance() as Calendar
+        if (!currentTime.before(eventDate)) {
+            view.register_button.visibility = View.GONE
+        }
     }
 
 
