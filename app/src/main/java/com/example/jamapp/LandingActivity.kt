@@ -116,6 +116,11 @@ class LandingActivity : AppCompatActivity() {
                     // Successful registration
                     Log.d("LOGIN","LOGIN SUCCESS")
                     val user = auth.currentUser
+
+                    // Update email
+                    db.child("users").child(auth.currentUser!!.uid).child("email")
+                        .setValue(auth.currentUser!!.email)
+
                     updateUI()
                 } else{
                     Log.w("LOGIN", "Could not login user", task.exception)
