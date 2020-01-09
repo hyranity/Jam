@@ -286,10 +286,10 @@ class event_info : AppCompatActivity() {
         }
 
         // VALIDATION : limit title input to 200 characters
-        if (editEventDescription.text.length > 110) {
+        if (editEventDescription.text.length > 150) {
             val toast = Toast.makeText(
                 applicationContext,
-                "Event description should not exceed 110 characters.",
+                "Event description should not exceed 150 characters.",
                 Toast.LENGTH_SHORT
             )
             toast.show()
