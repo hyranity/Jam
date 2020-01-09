@@ -286,8 +286,12 @@ class event_info : AppCompatActivity() {
         }
 
         // VALIDATION : limit title input to 200 characters
-        if (editEventDescription.text.length > 50) {
-            val toast = Toast.makeText(applicationContext, "Event description should not exceed 200 characters.", Toast.LENGTH_SHORT)
+        if (editEventDescription.text.length > 110) {
+            val toast = Toast.makeText(
+                applicationContext,
+                "Event description should not exceed 110 characters.",
+                Toast.LENGTH_SHORT
+            )
             toast.show()
             return
         }
@@ -335,6 +339,9 @@ class event_info : AppCompatActivity() {
 
         // Update in database
         db.child("event").child(event.event_id).setValue(updatedEvent)
+
+        // Show success
+        Toast.makeText(this, "Event successfully updated", Toast.LENGTH_SHORT).show()
 
         // Redirect
         view.findNavController().navigate(R.id.action_edit_event_to_event)
