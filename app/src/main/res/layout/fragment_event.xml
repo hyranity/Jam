@@ -67,15 +67,15 @@
         android:id="@+id/event_title"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="288dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="270dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:layout_weight="1"
-        android:singleLine="true"
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
 
         android:text="@string/eventTitle"
         android:textAlignment="center"
@@ -83,16 +83,15 @@
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/event_description"
         android:layout_width="302dp"
-        android:layout_height="162dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="452dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
@@ -103,7 +102,6 @@
         android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -111,11 +109,8 @@
         android:id="@+id/event_learnMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
         android:layout_marginTop="592dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginBottom="24dp"
         android:layout_weight="1"
         android:clickable="true"
         android:text="@string/eventLearnMore"
@@ -124,7 +119,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/register_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -166,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
         android:layout_marginLeft="45dp"
-        android:layout_marginTop="332dp"
+        android:layout_marginTop="320dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:layout_weight="1"
@@ -182,25 +176,25 @@
 
     <TextView
         android:id="@+id/event_count"
-        android:textAlignment="center"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="364dp"
+        android:layout_marginTop="360dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
         android:layout_weight="1"
         android:clickable="false"
-        android:text="@string/eventAttending"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
         android:onClick="eventToAttendance"
+        android:singleLine="true"
+        android:text="@string/eventAttending"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
+
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:marqueeRepeatLimit="marquee_forever" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/event_venue"
@@ -208,20 +202,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="364dp"
+        android:layout_marginTop="360dp"
         android:layout_weight="1"
         android:clickable="true"
-        android:text="@string/eventVenue"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
         android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="@string/eventVenue"
+
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:marqueeRepeatLimit="marquee_forever" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/reports_button"
