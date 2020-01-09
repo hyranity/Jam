@@ -49,7 +49,7 @@ class AttendanceList : Fragment() {
         linearLayoutManager = LinearLayoutManager(context)
         recyclerView!!.layoutManager = linearLayoutManager
 
-        val adapter = AttendanceAdapter(attendeesList)
+        val adapter = AttendanceAdapter(attendeesList, event)
         recyclerView.adapter = adapter
 
         // Get IDs of attendees
