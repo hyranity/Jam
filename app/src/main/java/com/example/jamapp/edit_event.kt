@@ -75,9 +75,7 @@ class edit_event : Fragment() {
             override fun onDateSet(view : DatePicker, year : Int, month: Int, day: Int){
 
                 // Set the selected date to calendar
-                cal.set(Calendar.YEAR, year)
-                cal.set(Calendar.MONTH, month)
-                cal.set(Calendar.DAY_OF_YEAR, day)
+                cal.set(year, month, day)
 
                 // Update date in EditText view
                 val dateFormat = "dd/MM/yyyy"

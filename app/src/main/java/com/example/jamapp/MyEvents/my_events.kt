@@ -123,6 +123,7 @@ class my_events : Fragment() {
 
 
                             }
+
                             // Update adapter
                             adapter.notifyDataSetChanged()
                         }
